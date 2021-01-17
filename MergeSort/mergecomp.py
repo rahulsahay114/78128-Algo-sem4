@@ -3,9 +3,7 @@ import math
 import matplotlib.pyplot as plt
 import csv 
 
-def mergeSort(arr):
-    
-    noOfComp = 0
+def mergeSort(arr, noOfComp):
 
     if len(arr) > 1:
  
@@ -19,10 +17,10 @@ def mergeSort(arr):
         R = arr[mid:]
  
         # Sorting the first half
-        mergeSort(L)
+        mergeSort(L, noOfComp)
  
         # Sorting the second half
-        mergeSort(R)
+        mergeSort(R, noOfComp)
  
         i = j = k = 0
  
@@ -37,6 +35,7 @@ def mergeSort(arr):
                 noOfComp += 1
                 arr[k] = R[j]
                 j += 1
+
             k += 1
  
         # Checking if any element was left
@@ -82,30 +81,61 @@ def plot(lstBest, lstAvg, lstWorst):
         yWorst.append(lstWorst[i][1])
 
     for i in range(len(xAvg)):
-        yLog.append(xAvg[i]*math.log(xAvg[i],2))
+        if xAvg[i] == 0:
+            continue
+        else:
+            yLog.append(xAvg[i]*math.log(xAvg[i],2))
 
+    plt.subplot(2, 2, 1)
     plt.plot(xAvg,yAvg)
-    plt.plot(xBest,yBest, 'r--')
-    plt.plot(xWorst,yWorst, 'y')
-    plt.plot(xAvg, yLog, 'g.-')
-    plt.legend(['Average Case', 'Best Case', 'Worst Case', 'nlogn'])
     plt.xlabel('Size of Input')
     plt.ylabel('Number of comparisions')
     plt.grid(True)
+    plt.title('Average Case')
+    plt.legend(['Average Case'])
+
+    plt.subplot(2, 2, 2)
+    plt.plot(xBest,yBest, 'r')
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('Best Case')
+    plt.legend(['Best Case'])
+
+    plt.subplot(2, 2, 3)
+    plt.plot(xWorst,yWorst, 'y')
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('Worst Case')
+    plt.legend(['Worst Case'])
+
+    plt.subplot(2, 2, 4)
+    plt.plot(xAvg, yLog, 'g')
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('nlogn')
+    plt.legend(['nlogn'])
+
+    #plt.legend(['Average Case', 'Best Case', 'Worst Case', 'nlogn'])
+
+    plt.subplots_adjust(hspace=0.4)
+    plt.suptitle('MergeSort Cases', fontsize = 20)
     plt.show()
 
 def avg_case():
     
     ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
-    noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
+    noOfRuns = 500
 
     while(noOfRuns > 0):
         
         x = 0
-        noOfInp = r.randint(0, 600) #input size
-        a = [int(i*r.random()) for i in range(noOfInp)]
-        x = mergeSort(a) #comparisions
+        noOfInp = r.randint(0, 1000) #input size
+        a = [int(i*r.random()) for i in range(2, noOfInp)]
+        x = mergeSort(a, x) #comparisions
 
         ListOfInpSizeAndComps.append((noOfInp, x)) #list of tuples.
         
@@ -120,15 +150,15 @@ def worst_case():
     
     ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
-    noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
+    noOfRuns = 500
 
     while(noOfRuns > 0):
         
         x = 0
-        noOfInp = r.randint(0, 600) #input size
-        a = [int(i*r.random()) for i in range(noOfInp)]
+        noOfInp = r.randint(0, 1000) #input size
+        a = [int(i*r.random()) for i in range(2, noOfInp)]
         a.sort(reverse = True)
-        x = mergeSort(a) #comparisions
+        x = mergeSort(a, x) #comparisions
 
         ListOfInpSizeAndComps.append((noOfInp, x)) #list of tuples.
         
@@ -140,15 +170,15 @@ def best_case():
 
     ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
-    noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
+    noOfRuns = 500
 
     while(noOfRuns > 0):
         
         x = 0
-        noOfInp = r.randint(0, 600) #input size
-        a = [int(i*r.random()) for i in range(noOfInp)]
+        noOfInp = r.randint(0, 1000) #input size
+        a = [int(i*r.random()) for i in range(2, noOfInp)]
         a.sort()
-        x = mergeSort(a) #comparisions
+        x = mergeSort(a, x) #comparisions
 
         ListOfInpSizeAndComps.append((noOfInp, x)) #list of tuples.
         
