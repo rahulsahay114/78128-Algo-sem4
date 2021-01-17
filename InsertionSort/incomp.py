@@ -1,8 +1,7 @@
 import random as r
 import math
 import matplotlib.pyplot as plt
-tot = [] 
-inps = []
+import csv
 
 def inssort(a):
 
@@ -66,7 +65,7 @@ def plot(lstBest, lstAvg, lstWorst):
 	plt.show()
 
 def avg_case():
-
+	
 	ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
 	noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
@@ -133,7 +132,17 @@ def main():
 	lstBest = best_case()
 	lstWorst = worst_case()
 
-	plot(lstBest, lstAvg, lstWorst)	
+	plot(lstBest, lstAvg, lstWorst)
+	
+	lstAvg.insert(0, 'AVG(InpSize,Cmprsns)')
+	lstBest.insert(0, 'BEST(InpSize,Cmprsns)')
+	lstWorst.insert(0, 'WORST(InpSize,Cmprsns)')
+
+	allLists = [lstAvg, lstWorst, lstBest]
+
+	with open('data_insertionSort.csv', 'w') as file:
+            writer = csv.writer(file)
+            writer.writerows(allLists)
 
 main()
 
