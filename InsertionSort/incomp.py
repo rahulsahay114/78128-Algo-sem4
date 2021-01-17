@@ -74,7 +74,7 @@ def avg_case():
 	while(noOfRuns > 0):
 		
 		x = 0
-		noOfInp = r.randint(100, 600) #input size
+		noOfInp = r.randint(0, 600) #input size
 		a = [int(i*r.random()) for i in range(noOfInp)]
 		x = inssort(a) #comparisions
 
@@ -96,7 +96,7 @@ def worst_case():
 	while(noOfRuns > 0):
 		
 		x = 0
-		noOfInp = r.randint(100, 600) #input size
+		noOfInp = r.randint(0, 600) #input size
 		a = [int(i*r.random()) for i in range(noOfInp)]
 		a.sort(reverse = True)
 		x = inssort(a) #comparisions
@@ -116,7 +116,7 @@ def best_case():
 	while(noOfRuns > 0):
 		
 		x = 0
-		noOfInp = r.randint(100, 600) #input size
+		noOfInp = r.randint(0, 600) #input size
 		a = [int(i*r.random()) for i in range(noOfInp)]
 		a.sort()
 		x = inssort(a) #comparisions
