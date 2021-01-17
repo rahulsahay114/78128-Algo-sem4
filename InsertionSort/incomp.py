@@ -23,52 +23,83 @@ def inssort(a):
 	return noOfComp #returns number of comparisions made
 
 def plot(lstBest, lstAvg, lstWorst):
-	
-	xAvg = [] 
-	yAvg = [] 
+    
+    xAvg = [] 
+    yAvg = [] 
 
-	xBest = [] 
-	yBest = [] 
+    xBest = [] 
+    yBest = [] 
 
-	xWorst = [] 
-	yWorst = [] 
+    xWorst = [] 
+    yWorst = [] 
 
-	yLog = []
+    yLog = []
 
-	lstAvg.sort() #sorting by size of inputs.
-	lstBest.sort() #sorting by size of inputs.
-	lstWorst.sort() #sorting by size of inputs.
-	
-	for i in range(len(lstAvg)):
-		xAvg.append(lstAvg[i][0]) #'size of inputs' extracted.
-		yAvg.append(lstAvg[i][1])
+    lstAvg.sort() #sorting by size of inputs.
+    lstBest.sort() #sorting by size of inputs.
+    lstWorst.sort() #sorting by size of inputs.
+    
+    for i in range(len(lstAvg)):
+        xAvg.append(lstAvg[i][0]) #'size of inputs' extracted.
+        yAvg.append(lstAvg[i][1])
 
-	for i in range(len(lstBest)):
-		xBest.append(lstBest[i][0]) #'size of inputs' extracted.
-		yBest.append(lstBest[i][1])
+    for i in range(len(lstBest)):
+        xBest.append(lstBest[i][0]) #'size of inputs' extracted.
+        yBest.append(lstBest[i][1])
 
-	for i in range(len(lstWorst)):
-		xWorst.append(lstWorst[i][0]) #'size of inputs' extracted.
-		yWorst.append(lstWorst[i][1])
+    for i in range(len(lstWorst)):
+        xWorst.append(lstWorst[i][0]) #'size of inputs' extracted.
+        yWorst.append(lstWorst[i][1])
 
-	for i in range(len(xAvg)):
-		yLog.append(xAvg[i]*math.log(xAvg[i],2))
+    for i in range(len(xAvg)):
+        if xAvg[i] == 0:
+            continue
+        else:
+            yLog.append(xAvg[i]*math.log(xAvg[i],2))
 
-	plt.plot(xAvg,yAvg)
-	plt.plot(xBest,yBest, 'r.-')
-	plt.plot(xWorst,yWorst, 'y')
-	plt.plot(xAvg, yLog, 'g--')
-	plt.legend(['Average Case', 'Best Case', 'Worst Case', 'nlogn'])
-	plt.xlabel('Size of Input')
-	plt.ylabel('Number of comparisions')
-	plt.grid(True)
-	plt.show()
+    plt.subplot(2, 2, 1)
+    plt.plot(xAvg,yAvg)
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('Average Case')
+    plt.legend(['Average Case'])
+
+    plt.subplot(2, 2, 2)
+    plt.plot(xBest,yBest, 'r')
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('Best Case')
+    plt.legend(['Best Case'])
+
+    plt.subplot(2, 2, 3)
+    plt.plot(xWorst,yWorst, 'y')
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('Worst Case')
+    plt.legend(['Worst Case'])
+
+    plt.subplot(2, 2, 4)
+    plt.plot(xAvg, yLog, 'g')
+    plt.xlabel('Size of Input')
+    plt.ylabel('Number of comparisions')
+    plt.grid(True)
+    plt.title('nlogn')
+    plt.legend(['nlogn'])
+
+    #plt.legend(['Average Case', 'Best Case', 'Worst Case', 'nlogn'])
+
+    plt.subplots_adjust(hspace=0.4)
+    plt.suptitle('Insertion Sort Cases', fontsize = 20)
+    plt.show()
 
 def avg_case():
 	
 	ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
-	noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
+	noOfRuns = 500 #r.randint(10, 100) #deciding the total number of runs to be made
 
 	while(noOfRuns > 0):
 		
@@ -90,7 +121,7 @@ def worst_case():
 	
 	ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
-	noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
+	noOfRuns = 500 #r.randint(10, 100) #deciding the total number of runs to be made
 
 	while(noOfRuns > 0):
 		
@@ -110,7 +141,7 @@ def best_case():
 
 	ListOfInpSizeAndComps = [] #list of number of comparisons made in different runs of insertion sort.
 
-	noOfRuns = r.randint(10, 100) #deciding the total number of runs to be made
+	noOfRuns = 500 #r.randint(10, 100) #deciding the total number of runs to be made
 
 	while(noOfRuns > 0):
 		
