@@ -2,6 +2,7 @@ import random as r
 import math
 import matplotlib.pyplot as plt
 import csv
+import numpy as np
 
 def inssort(a):
 
@@ -33,6 +34,7 @@ def plot(lstBest, lstAvg, lstWorst):
     xWorst = [] 
     yWorst = [] 
 
+    xLog = []
     yLog = []
 
     lstAvg.sort() #sorting by size of inputs.
@@ -57,10 +59,13 @@ def plot(lstBest, lstAvg, lstWorst):
         else:
             yLog.append(xAvg[i]*math.log(xAvg[i],2))
 
+    xLog = np.array(xAvg[::])
+    yLog = np.array(yLog[::])
+
     plt.subplot(2, 2, 1)
     plt.plot(xAvg,yAvg)
     plt.xlabel('Size of Input')
-    plt.ylabel('Number of comparisions')
+    plt.ylabel('Number of Comparisions')
     plt.grid(True)
     plt.title('Average Case')
     plt.legend(['Average Case'])
@@ -68,7 +73,7 @@ def plot(lstBest, lstAvg, lstWorst):
     plt.subplot(2, 2, 2)
     plt.plot(xBest,yBest, 'r')
     plt.xlabel('Size of Input')
-    plt.ylabel('Number of comparisions')
+    plt.ylabel('Number of Comparisions')
     plt.grid(True)
     plt.title('Best Case')
     plt.legend(['Best Case'])
@@ -76,15 +81,15 @@ def plot(lstBest, lstAvg, lstWorst):
     plt.subplot(2, 2, 3)
     plt.plot(xWorst,yWorst, 'y')
     plt.xlabel('Size of Input')
-    plt.ylabel('Number of comparisions')
+    plt.ylabel('Number of Comparisions')
     plt.grid(True)
     plt.title('Worst Case')
     plt.legend(['Worst Case'])
 
     plt.subplot(2, 2, 4)
-    plt.plot(xAvg, yLog, 'g')
+    plt.plot(xLog, yLog, 'g')
     plt.xlabel('Size of Input')
-    plt.ylabel('Number of comparisions')
+    plt.ylabel('Number of Comparisions')
     plt.grid(True)
     plt.title('nlogn')
     plt.legend(['nlogn'])
