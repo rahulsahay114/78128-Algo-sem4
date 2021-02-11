@@ -195,7 +195,7 @@ def main():
 
 	allLists = [lstAvg, lstWorst, lstBest]
 
-	with open('data_mergesort.csv', 'w') as file:
+	with open('data_heapsort.csv', 'w') as file:
 	        writer = csv.writer(file)
 	        writer.writerows(allLists)
 
