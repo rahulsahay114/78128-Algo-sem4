@@ -167,7 +167,7 @@ def worst_case():
 def avg_case():
 
 	inpComp = []
-	runs = 200
+	runs = 100
 	q = quick()
 
 	while(runs > 0):
