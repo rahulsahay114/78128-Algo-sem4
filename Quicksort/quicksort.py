@@ -42,8 +42,6 @@ def plot(lstBest, lstAvg, lstWorst):
     print(lstAvg)
 
     plt.subplot(2, 2, 1)
-    #xAvg.sort()
-    #yAvg.sort()
     plt.plot(xAvg,yAvg)
     plt.xlabel('Size of Input')
     plt.ylabel('Number of comparisions')
@@ -53,8 +51,6 @@ def plot(lstBest, lstAvg, lstWorst):
 
     plt.subplot(2, 2, 2)
     plt.plot(xBest,yBest, 'r')
-    #xBest.sort()
-    #yBest.sort()
     plt.xlabel('Size of Input')
     plt.ylabel('Number of comparisions')
     plt.grid(True)
@@ -63,8 +59,6 @@ def plot(lstBest, lstAvg, lstWorst):
 
     plt.subplot(2, 2, 3)
     plt.plot(xWorst,yWorst, 'y')
-    #xWorst.sort()
-    #yWorst.sort()
     plt.xlabel('Size of Input')
     plt.ylabel('Number of comparisions')
     plt.grid(True)
