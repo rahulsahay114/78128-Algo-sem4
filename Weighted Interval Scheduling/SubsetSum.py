@@ -3,13 +3,12 @@ n = 3
 W = 6 #knapsack weight
 
 M = [[0 for i in range(W+1)] for i in range(n+1)]
-print(M)
-print()
 
+'''print('\nM: ')
 for r in range(n+1):
 	for c in range(W+1):
 		print(M[r][c], end=' ')
-	print()
+	print()'''
 
 #The leftmost column and bottom row is always 0.
 for i in range(n+1):
@@ -38,18 +37,20 @@ for i in range(1, n+1):
 			M[i][j] = max(M[i-1][j], w[i-1] + M[i-1][j- w[i-1]])
 
 
+
 #Printing our solution array 
 #starting from last row upto the first.
-print()
+print('\nM: ')
 for r in range(n, -1, -1):
 		#print(M[r], end=' ')
-		print(r, end='  ')
+		print(r, end='   ')
 		for i in range(len(M[r])):
 			print(M[r][i], end=' ')
 		print()
 
-for i in range(W):
-	print('{}'.format(i))
+print("\n  ", end='  ')
+for i in range(W+1):
+	print('{:>1}'.format(i), end=' ')
 	#print(i, end='')
 print()
 #print(M)
