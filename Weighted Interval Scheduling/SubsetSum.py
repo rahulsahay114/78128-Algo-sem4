@@ -1,5 +1,5 @@
 w = [2, 2, 3] #weights of items
-n = 3
+n = len(w)
 W = 6 #knapsack weight
 
 M = [[0 for i in range(W+1)] for i in range(n+1)]
@@ -53,4 +53,5 @@ for i in range(W+1):
 	print('{:>1}'.format(i), end=' ')
 	#print(i, end='')
 print()
-#print(M)
+
+print('\nOptimum solution: ', M[n][W])

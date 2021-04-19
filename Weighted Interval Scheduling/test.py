@@ -35,8 +35,8 @@ def isSubsetSum(set, n, sum):
 		
 
 if __name__=='__main__':
-	set = [3, 4, 5]
-	sum = 9
+	set = [2, 2, 3]
+	sum = 5
 	n = len(set)
 	if (isSubsetSum(set, n, sum) == True):
 		print("Found a subset with given sum")
